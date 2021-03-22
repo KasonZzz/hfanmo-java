@@ -1,0 +1,75 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/luzhou-spa?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=true
+    username: root
+    password: Root7911
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 5000ms
+
+
+#swagger配置
+swagger:
+  base-path: /**
+  base-package: 'cn.hfanmo.lzspa'
+  title: '庐州Spa-swagger文档'
+  description: '庐州Spa后台接口详情'
+  version: 'v0.0.1'
+  contact:
+    name: 'KasonZzz'
+    url: 'http://www..cn'
+    email: 'jamobastow@gmail.com'
+
+
+
+#  定时任务配置
+scheduled:
+  MySQL:
+    DBC_DRIVER: com.mysql.cj.jdbc.Driver
+    DB_URL: jdbc:mysql://localhost:3306/luzhou-spa?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=true
+    USERNAME: root
+    PASSWORD: Root7911
+  cron: 0/5 * * * * ?     #每月最后一天 10:15分执行 “ 0 15 10 L * ? ”
+enable:
+  scheduled: false
+
+
+
+# mybatis-plus
+mybatis-plus:
+  type-aliases-package: cn.hfanmo.lzspa.pojo
+  mapper-locations:  classpath*:mapper/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#security:
+#  basic:
+#    enabled : false
+
+
+
+#七牛云配置：
+qiniu:
+  accessKey: "06wMoJjcNXth578gHg_sX3cFasa4lHbZYehRqTo9"
+  secretKey: "vBrO4a0DQzCK0-XLh6s4YYzIlOxUKzCO_99HS70o"
+  bucket: "kasonmd"
+
+
+#微信支付
+appid: "wx8397f8696b538317"
+partner: "1473426802"
+partnerkey: "8A627A4578ACE384017C997F12D68B23"
+notifyurl: "http://a31ef7db.ngrok.io/WeChatPay/WeChatPayNotify"
