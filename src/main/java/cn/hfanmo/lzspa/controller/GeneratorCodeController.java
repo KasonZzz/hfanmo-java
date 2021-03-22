@@ -52,9 +52,9 @@ public class GeneratorCodeController {
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL)//数据库类型
                 .setDriverName("com.mysql.jdbc.Driver")
-                .setUrl("jdbc:mysql://localhost:3306/luzhou-spa?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=true")
+                .setUrl("jdbc:mysql://47.117.116.96:3306/luzhou-spa?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=true")
                 .setUsername("root")
-                .setPassword("Root7911");
+                .setPassword("root");
 
         //3、策略配置
         StrategyConfig strategyConfig = new StrategyConfig();

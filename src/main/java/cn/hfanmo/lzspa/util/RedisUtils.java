@@ -1,8 +1,9 @@
 package cn.hfanmo.lzspa.util;
 
 
-import cn.cutenine.aisi.pojo.entity.BaseResult;
-import cn.cutenine.aisi.pojo.entity.SetData;
+
+import cn.hfanmo.lzspa.pojo.common.BaseResult;
+import cn.hfanmo.lzspa.pojo.common.SetData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
