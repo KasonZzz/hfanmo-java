@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
@@ -45,11 +46,23 @@ public class SpaAppBanner extends Model<SpaAppBanner> {
     @ApiModelProperty(value = "是否启用，0启用，1禁用，")
     private String status;
 
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "创建日期")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")
     private LocalDateTime createTime;
 
+    @ApiModelProperty(value = "修改日期")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")
+    private LocalDateTime updateTime;
+
     @ApiModelProperty(value = "创建人")
-    private String createBy;
+    @JsonSerialize(using = LongJsonSerializer.class)
+    @JsonDeserialize(using = LongJsonDeserializer.class)
+    private Long createBy;
+
+    @ApiModelProperty(value = "修改人")
+    @JsonSerialize(using = LongJsonSerializer.class)
+    @JsonDeserialize(using = LongJsonDeserializer.class)
+    private Long updateBy;
 
 
     @Override

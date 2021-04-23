@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
@@ -71,11 +72,26 @@ public class SpaAppMassagist extends Model<SpaAppMassagist> {
     @ApiModelProperty(value = "健康码")
     private String healthCode;
 
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
     @ApiModelProperty(value = "状态（0正常，1封禁）",example = "1")
     private Integer status;
+
+    @ApiModelProperty(value = "创建日期")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")
+    private LocalDateTime createTime;
+
+    @ApiModelProperty(value = "修改日期")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")
+    private LocalDateTime updateTime;
+
+    @ApiModelProperty(value = "创建人")
+    @JsonSerialize(using = LongJsonSerializer.class)
+    @JsonDeserialize(using = LongJsonDeserializer.class)
+    private Long createBy;
+
+    @ApiModelProperty(value = "修改人")
+    @JsonSerialize(using = LongJsonSerializer.class)
+    @JsonDeserialize(using = LongJsonDeserializer.class)
+    private Long updateBy;
 
     @TableField(exist = false)
     private List<SpaAppMassPic> spaAppMassPics;

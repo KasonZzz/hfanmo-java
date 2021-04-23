@@ -1,7 +1,6 @@
 package cn.hfanmo.lzspa.util;
 
 
-
 import cn.hfanmo.lzspa.pojo.common.BaseResult;
 import cn.hfanmo.lzspa.pojo.common.SetData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,89 +24,142 @@ public class RedisUtils {
 
     private BaseResult paramResult = new BaseResult(4001);
 
+
     /**
-     * setKv 单条插入
+     * 鍗曟潯鏌ヨ
      *
+     * @param key
      * @return
      */
-    public BaseResult setKv(String key, String value) {
-        if (!ObjectUtils.isEmpty(key) && !ObjectUtils.isEmpty(value)) {
-            redisTemplate.opsForValue().set(key, value);
-            return result;
+    public String getByKey(String key) {
+        if (!ObjectUtils.isEmpty(key)) {
+            return redisTemplate.opsForValue().get(key);
         }
-        return paramResult;
+        return null;
     }
 
     /**
-     * SetData 单条插入
+     * SetData鍗曟潯鏌ヨ
      *
      * @param data
      * @return
      */
-    public BaseResult set(SetData data) {
+    public String getBySetData(SetData data) {
+        if (!ObjectUtils.isEmpty(data.getKey())) {
+            return redisTemplate.opsForValue().get(data.getKey());
+        }
+        return null;
+    }
+
+    /**
+     * SetData鎵归噺鏌ヨ
+     *
+     * @param data
+     * @return
+     */
+    public List<String> multiGet(SetData data) {
+        if (!ObjectUtils.isEmpty(data.getKeys())) {
+            return redisTemplate.opsForValue().multiGet(data.getKeys());
+        }
+        return null;
+    }
+
+    /**
+     * List鎵归噺鏌ヨ
+     *
+     * @param keys
+     * @return
+     */
+    public List<String> multiGetForList(List<String> keys) {
+        if (!ObjectUtils.isEmpty(keys)) {
+            return redisTemplate.opsForValue().multiGet(keys);
+        }
+        return null;
+    }
+
+
+    /**
+     * setKv 鍗曟潯鎻掑叆
+     *
+     * @return
+     */
+    public boolean setKv(String key, String value) {
+        if (!ObjectUtils.isEmpty(key) && !ObjectUtils.isEmpty(value)) {
+            redisTemplate.opsForValue().set(key, value);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * SetData 鍗曟潯鎻掑叆
+     *
+     * @param data
+     * @return
+     */
+    public boolean set(SetData data) {
         if (!ObjectUtils.isEmpty(data.getKey()) && !ObjectUtils.isEmpty(data.getValue())) {
             if (ObjectUtils.isEmpty(data.getTime())) {
                 redisTemplate.opsForValue().set(data.getKey(), data.getValue());
-                return result;
+                return true;
             } else {
                 redisTemplate.opsForValue().set(data.getKey(), data.getValue(), data.getTime(), TimeUnit.SECONDS);
-                return result;
+                return true;
             }
         }
-        return paramResult;
+        return false;
     }
 
     /**
-     * Setdata批量插入
+     * Setdata鎵归噺鎻掑叆
      *
      * @param data
      * @return
      */
-    public BaseResult multiSet(SetData data) {
+    public boolean multiSet(SetData data) {
         if (!ObjectUtils.isEmpty(data.getKvs())) {
             if (ObjectUtils.isEmpty(data.getTime())) {
                 redisTemplate.opsForValue().multiSet(data.getKvs());
-                return result;
+                return true;
             } else {
                 data.getKvs().forEach((key, value) -> {
                     redisTemplate.opsForValue().set(key, value, data.getTime(), TimeUnit.SECONDS);
                 });
-                return result;
+                return true;
             }
         }
-        return paramResult;
+        return false;
     }
 
     /**
-     * Map批量插入
+     * Map鎵归噺鎻掑叆
      *
      * @param map
      * @return
      */
-    public BaseResult multiSetForAccess(Map<String, String> map) {
+    public boolean multiSetForMap(Map<String, String> map) {
         if (!ObjectUtils.isEmpty(map)) {
             redisTemplate.opsForValue().multiSet(map);
-            return result;
+            return true;
         }
-        return paramResult;
+        return false;
     }
 
     /**
-     * SetData单删
+     * SetData鍗曞垹
      *
      * @param data
      * @return
      */
-    public BaseResult delete(SetData data) {
+    public boolean delete(SetData data) {
         if (!ObjectUtils.isEmpty(data.getKey())) {
-            Boolean delete = redisTemplate.delete(data.getKey());
-            return new BaseResult(delete);
+            return redisTemplate.delete(data.getKey());
         }
-        return paramResult;
+        return false;
     }
 
     /**
-     * SetData批量删除
+     * SetData鎵归噺鍒犻櫎
      *
      * @param data
      * @return
@@ -141,7 +193,7 @@ public class RedisUtils {
     }
 
     /**
-     * List批量删除
+     * List鎵归噺鍒犻櫎
      *
      * @param keys
      * @return
@@ -172,62 +224,4 @@ public class RedisUtils {
         }
         return paramResult;
     }
-
-
-    /**
-     * SetData单条查询
-     *
-     * @param key
-     * @return
-     */
-    public BaseResult getByKey(String key) {
-        if (!ObjectUtils.isEmpty(key)) {
-            String value = redisTemplate.opsForValue().get(key);
-            return new BaseResult(value);
-        }
-        return paramResult;
-    }
-
-    /**
-     * SetData单条查询
-     *
-     * @param data
-     * @return
-     */
-    public BaseResult get(SetData data) {
-        if (!ObjectUtils.isEmpty(data.getKey())) {
-            String value = redisTemplate.opsForValue().get(data.getKey());
-            return new BaseResult(value);
-        }
-        return paramResult;
-    }
-
-    /**
-     * SetData批量查询
-     *
-     * @param data
-     * @return
-     */
-    public BaseResult multiGet(SetData data) {
-        if (!ObjectUtils.isEmpty(data.getKeys())) {
-            List<String> strings = redisTemplate.opsForValue().multiGet(data.getKeys());
-            return new BaseResult(strings);
-        }
-        return paramResult;
-    }
-
-    /**
-     * List批量查询
-     *
-     * @param keys
-     * @return
-     */
-    public BaseResult multiGetForAccess(List<String> keys) {
-        if (!ObjectUtils.isEmpty(keys)) {
-            List<String> strings = redisTemplate.opsForValue().multiGet(keys);
-            return new BaseResult(strings);
-        }
-        return paramResult;
-    }
-
 }

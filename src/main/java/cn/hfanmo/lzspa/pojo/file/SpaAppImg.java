@@ -1,4 +1,4 @@
-package cn.hfanmo.lzspa.pojo.care;
+package cn.hfanmo.lzspa.pojo.file;
 
 import cn.hfanmo.lzspa.util.serializer.LongJsonDeserializer;
 import cn.hfanmo.lzspa.util.serializer.LongJsonSerializer;
@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 我的关注表
+ * 系统图片表
  * </p>
  *
  * @author KasonZzz
@@ -27,9 +27,9 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("t_spa_app_care")
-@ApiModel(value="SpaAppCare对象", description="我的关注表")
-public class SpaAppCare extends Model<SpaAppCare> {
+@TableName("t_spa_app_img")
+@ApiModel(value="SpaAppImg对象", description="系统图片表")
+public class SpaAppImg extends Model<SpaAppImg> {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,18 +39,14 @@ public class SpaAppCare extends Model<SpaAppCare> {
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
-    @ApiModelProperty(value = "被关注的人id")
-    @JsonSerialize(using = LongJsonSerializer.class)
-    @JsonDeserialize(using = LongJsonDeserializer.class)
-    private Long careId;
+    @ApiModelProperty(value = "图片地址")
+    private String url;
 
-    @ApiModelProperty(value = "用户id")
-    @JsonSerialize(using = LongJsonSerializer.class)
-    @JsonDeserialize(using = LongJsonDeserializer.class)
-    private Long userId;
+    @ApiModelProperty(value = "图片类型")
+    private String type;
 
-    @ApiModelProperty(value = "关注类型")
-    private Integer type;
+    @ApiModelProperty(value = "绑定ID可能是user也可能是其他")
+    private Long bindId;
 
     @ApiModelProperty(value = "创建日期")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")

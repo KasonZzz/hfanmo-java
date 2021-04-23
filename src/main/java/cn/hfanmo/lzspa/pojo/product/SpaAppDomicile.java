@@ -1,4 +1,4 @@
-package cn.hfanmo.lzspa.pojo.care;
+package cn.hfanmo.lzspa.pojo.product;
 
 import cn.hfanmo.lzspa.util.serializer.LongJsonDeserializer;
 import cn.hfanmo.lzspa.util.serializer.LongJsonSerializer;
@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 我的关注表
+ * 住址表
  * </p>
  *
  * @author KasonZzz
@@ -27,9 +27,9 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("t_spa_app_care")
-@ApiModel(value="SpaAppCare对象", description="我的关注表")
-public class SpaAppCare extends Model<SpaAppCare> {
+@TableName("t_spa_app_domicile")
+@ApiModel(value="SpaAppDomicile对象", description="住址表")
+public class SpaAppDomicile extends Model<SpaAppDomicile> {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,18 +39,23 @@ public class SpaAppCare extends Model<SpaAppCare> {
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
-    @ApiModelProperty(value = "被关注的人id")
-    @JsonSerialize(using = LongJsonSerializer.class)
-    @JsonDeserialize(using = LongJsonDeserializer.class)
-    private Long careId;
+    @ApiModelProperty(value = "名称")
+    private String name;
+
+    @ApiModelProperty(value = "手机号")
+    private String phoneNum;
+
+    @ApiModelProperty(value = "所在区域")
+    private String area;
+
+    @ApiModelProperty(value = "详细地址")
+    private String adress;
+
+    @ApiModelProperty(value = "是否默认")
+    private String status;
 
     @ApiModelProperty(value = "用户id")
-    @JsonSerialize(using = LongJsonSerializer.class)
-    @JsonDeserialize(using = LongJsonDeserializer.class)
     private Long userId;
-
-    @ApiModelProperty(value = "关注类型")
-    private Integer type;
 
     @ApiModelProperty(value = "创建日期")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")
@@ -69,7 +74,6 @@ public class SpaAppCare extends Model<SpaAppCare> {
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     private Long updateBy;
-
 
     @Override
     protected Serializable pkVal() {

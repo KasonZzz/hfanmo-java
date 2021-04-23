@@ -1,4 +1,4 @@
-package cn.hfanmo.lzspa.pojo.care;
+package cn.hfanmo.lzspa.pojo.comment;
 
 import cn.hfanmo.lzspa.util.serializer.LongJsonDeserializer;
 import cn.hfanmo.lzspa.util.serializer.LongJsonSerializer;
@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 我的关注表
+ * 我的评论
  * </p>
  *
  * @author KasonZzz
@@ -27,9 +27,9 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("t_spa_app_care")
-@ApiModel(value="SpaAppCare对象", description="我的关注表")
-public class SpaAppCare extends Model<SpaAppCare> {
+@TableName("t_spa_app_comment")
+@ApiModel(value="SpaAppComment对象", description="我的评论")
+public class SpaAppComment extends Model<SpaAppComment> {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,17 +39,16 @@ public class SpaAppCare extends Model<SpaAppCare> {
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
-    @ApiModelProperty(value = "被关注的人id")
-    @JsonSerialize(using = LongJsonSerializer.class)
-    @JsonDeserialize(using = LongJsonDeserializer.class)
-    private Long careId;
+    @ApiModelProperty(value = "评论内容")
+    private String content;
+
+    @ApiModelProperty(value = "评论id")
+    private Long commentId;
 
     @ApiModelProperty(value = "用户id")
-    @JsonSerialize(using = LongJsonSerializer.class)
-    @JsonDeserialize(using = LongJsonDeserializer.class)
     private Long userId;
 
-    @ApiModelProperty(value = "关注类型")
+    @ApiModelProperty(value = "评论类型")
     private Integer type;
 
     @ApiModelProperty(value = "创建日期")

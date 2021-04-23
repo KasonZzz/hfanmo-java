@@ -1,4 +1,4 @@
-package cn.hfanmo.lzspa.pojo.care;
+package cn.hfanmo.lzspa.pojo.product;
 
 import cn.hfanmo.lzspa.util.serializer.LongJsonDeserializer;
 import cn.hfanmo.lzspa.util.serializer.LongJsonSerializer;
@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 我的关注表
+ * 购物车
  * </p>
  *
  * @author KasonZzz
@@ -27,9 +27,9 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("t_spa_app_care")
-@ApiModel(value="SpaAppCare对象", description="我的关注表")
-public class SpaAppCare extends Model<SpaAppCare> {
+@TableName("t_spa_app_cart")
+@ApiModel(value="SpaAppCart对象", description="购物车")
+public class SpaAppCart extends Model<SpaAppCart> {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,18 +39,14 @@ public class SpaAppCare extends Model<SpaAppCare> {
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
-    @ApiModelProperty(value = "被关注的人id")
-    @JsonSerialize(using = LongJsonSerializer.class)
-    @JsonDeserialize(using = LongJsonDeserializer.class)
-    private Long careId;
+    @ApiModelProperty(value = "商品id")
+    private Long productId;
 
-    @ApiModelProperty(value = "用户id")
-    @JsonSerialize(using = LongJsonSerializer.class)
-    @JsonDeserialize(using = LongJsonDeserializer.class)
+    @ApiModelProperty(value = "用户表")
     private Long userId;
 
-    @ApiModelProperty(value = "关注类型")
-    private Integer type;
+    @ApiModelProperty(value = "数量")
+    private Integer count;
 
     @ApiModelProperty(value = "创建日期")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")

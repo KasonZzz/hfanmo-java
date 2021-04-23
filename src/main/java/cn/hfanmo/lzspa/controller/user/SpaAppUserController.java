@@ -28,7 +28,6 @@ public class SpaAppUserController {
     @PostMapping("register")
     public BaseResult register(@RequestBody SpaAppUser spaAppUser) {
         spaAppUserService.register(spaAppUser);
-
         return null;
     }
 

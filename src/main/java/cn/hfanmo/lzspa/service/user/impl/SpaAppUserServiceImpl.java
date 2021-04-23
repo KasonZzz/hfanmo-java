@@ -25,11 +25,10 @@ public class SpaAppUserServiceImpl extends ServiceImpl<SpaAppUserMapper, SpaAppU
     @Override
     public SpaAppUser register(SpaAppUser spaAppUser) {
 
-        if(!ObjectUtils.isEmpty(spaAppUser.getMobile())){
-            String redisKey = "register_code_"+spaAppUser.getMobile();
-            String value = (String) redisUtils.getByKey(redisKey).getData();
+        if (!ObjectUtils.isEmpty(spaAppUser.getMobile())) {
+            String redisKey = "register_code_" + spaAppUser.getMobile();
+            String value = redisUtils.getByKey(redisKey);
         }
-
 
 
         return null;
