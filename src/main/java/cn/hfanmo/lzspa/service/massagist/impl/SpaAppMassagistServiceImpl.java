@@ -1,7 +1,7 @@
 package cn.hfanmo.lzspa.service.massagist.impl;
 
-import cn.hfanmo.lzspa.pojo.massagist.SpaAppMassagist;
 import cn.hfanmo.lzspa.mapper.massagist.SpaAppMassagistMapper;
+import cn.hfanmo.lzspa.pojo.massagist.SpaAppMassagist;
 import cn.hfanmo.lzspa.service.massagist.SpaAppMassagistService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

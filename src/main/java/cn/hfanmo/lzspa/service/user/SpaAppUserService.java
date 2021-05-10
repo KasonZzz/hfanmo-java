@@ -14,4 +14,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface SpaAppUserService extends IService<SpaAppUser> {
 
     SpaAppUser register(SpaAppUser spaAppUser);
+
+    boolean getSmsCode(String mobile);
 }

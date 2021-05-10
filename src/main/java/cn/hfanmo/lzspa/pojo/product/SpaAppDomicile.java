@@ -2,6 +2,7 @@ package cn.hfanmo.lzspa.pojo.product;
 
 import cn.hfanmo.lzspa.util.serializer.LongJsonDeserializer;
 import cn.hfanmo.lzspa.util.serializer.LongJsonSerializer;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -33,7 +34,7 @@ public class SpaAppDomicile extends Model<SpaAppDomicile> {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "唯一ID",example = "01372355291265462274")
+    @ApiModelProperty(value = "唯一ID")
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     @TableId(value = "id", type = IdType.ASSIGN_ID)
@@ -49,13 +50,18 @@ public class SpaAppDomicile extends Model<SpaAppDomicile> {
     private String area;
 
     @ApiModelProperty(value = "详细地址")
-    private String adress;
+    private String address;
 
     @ApiModelProperty(value = "是否默认")
     private String status;
 
     @ApiModelProperty(value = "用户id")
+    @JsonSerialize(using = LongJsonSerializer.class)
+    @JsonDeserialize(using = LongJsonDeserializer.class)
     private Long userId;
+
+    @ApiModelProperty(value = "名字首字")
+    private String headCode;
 
     @ApiModelProperty(value = "创建日期")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")
@@ -74,6 +80,9 @@ public class SpaAppDomicile extends Model<SpaAppDomicile> {
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     private Long updateBy;
+
+    @TableField(exist = false)
+    private String type;
 
     @Override
     protected Serializable pkVal() {

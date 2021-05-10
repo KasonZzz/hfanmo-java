@@ -31,7 +31,7 @@ import java.time.LocalDateTime;
 @ApiModel(value = "SpaAppMassPic对象", description = "技师图片表")
 public class SpaAppMassPic extends Model<SpaAppMassPic> {
 
-    @ApiModelProperty(value = "唯一ID",example = "01372355291265462274")
+    @ApiModelProperty(value = "唯一ID")
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     @TableId(value = "id", type = IdType.ASSIGN_ID)

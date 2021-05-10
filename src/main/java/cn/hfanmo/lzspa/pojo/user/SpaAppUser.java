@@ -2,6 +2,7 @@ package cn.hfanmo.lzspa.pojo.user;
 
 import cn.hfanmo.lzspa.util.serializer.LongJsonDeserializer;
 import cn.hfanmo.lzspa.util.serializer.LongJsonSerializer;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -33,11 +34,12 @@ public class SpaAppUser extends Model<SpaAppUser> {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "唯一ID",example = "01372355291265462274")
+    @ApiModelProperty(value = "唯一ID")
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
+
     @ApiModelProperty(value = "昵称")
     private String nickName;
 
@@ -79,6 +81,9 @@ public class SpaAppUser extends Model<SpaAppUser> {
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     private Long updateBy;
+
+    @TableField(exist = false)
+    private String smsCode;
 
 
     @Override

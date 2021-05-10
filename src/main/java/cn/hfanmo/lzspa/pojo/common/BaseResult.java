@@ -66,8 +66,14 @@ public class BaseResult<T> {
             case 404:
                 msg = "404 Not Found";
                 break;
+            case 4041:
+                msg="用户不存在";
+                break;
             case 500:
                 msg = " Internal Server Error ";
+                break;
+            case 601:
+                msg="验证码输入错误或验证码已过期";
                 break;
             case 4001:
                 msg = "Parameter verification failed";

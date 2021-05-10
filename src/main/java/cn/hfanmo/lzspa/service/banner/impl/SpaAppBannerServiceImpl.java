@@ -1,7 +1,7 @@
 package cn.hfanmo.lzspa.service.banner.impl;
 
-import cn.hfanmo.lzspa.pojo.banner.SpaAppBanner;
 import cn.hfanmo.lzspa.mapper.banner.SpaAppBannerMapper;
+import cn.hfanmo.lzspa.pojo.banner.SpaAppBanner;
 import cn.hfanmo.lzspa.service.banner.SpaAppBannerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

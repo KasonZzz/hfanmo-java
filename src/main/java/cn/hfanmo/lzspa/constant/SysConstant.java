@@ -14,5 +14,10 @@ public class SysConstant {
     public static final String NO_SQL = "Redis";
     public static final String BASE_PACKAGE = "cn.hfanmo.lzspa";
 
+    /**
+     * 周过期时间
+     */
+    public static final Long EXPIRE_WEEK = 604800l;
+
 
 }

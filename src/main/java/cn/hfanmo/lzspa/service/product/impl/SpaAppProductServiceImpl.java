@@ -1,7 +1,7 @@
 package cn.hfanmo.lzspa.service.product.impl;
 
-import cn.hfanmo.lzspa.pojo.product.SpaAppProduct;
 import cn.hfanmo.lzspa.mapper.product.SpaAppProductMapper;
+import cn.hfanmo.lzspa.pojo.product.SpaAppProduct;
 import cn.hfanmo.lzspa.service.product.SpaAppProductService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

@@ -33,7 +33,7 @@ import lombok.EqualsAndHashCode;
 @ApiModel(value="SpaAppMassagist对象", description="按摩师")
 public class SpaAppMassagist extends Model<SpaAppMassagist> {
 
-    @ApiModelProperty(value = "唯一ID",example = "01372355291265462274")
+    @ApiModelProperty(value = "唯一ID")
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     @TableId(value = "id", type = IdType.ASSIGN_ID)
@@ -74,6 +74,9 @@ public class SpaAppMassagist extends Model<SpaAppMassagist> {
 
     @ApiModelProperty(value = "状态（0正常，1封禁）",example = "1")
     private Integer status;
+
+    @ApiModelProperty(value = "首屏大图",example = "1")
+    private String indexPic;
 
     @ApiModelProperty(value = "创建日期")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT-8")

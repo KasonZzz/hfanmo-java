@@ -33,7 +33,7 @@ public class SpaAppImg extends Model<SpaAppImg> {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "唯一ID",example = "01372355291265462274")
+    @ApiModelProperty(value = "唯一ID")
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     @TableId(value = "id", type = IdType.ASSIGN_ID)
