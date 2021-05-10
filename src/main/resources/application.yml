@@ -4,14 +4,14 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.117.116.96:3306/luzhou-spa?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=true
+    url: jdbc:mysql://your host:3306/luzhou-spa?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=true
     username: root
     password: root
   redis:
     database: 0
-    host: 47.117.116.96
+    host: your host
     port: 7911
-    password: kason
+    password:
     jedis:
       pool:
         max-active: 8
@@ -30,7 +30,7 @@ swagger:
   version: 'v0.0.1'
   contact:
     name: 'KasonZzz'
-    url: 'http://www..cn'
+    url: 'http://www.cutenine.cn'
     email: 'jamobastow@gmail.com'
 
 
@@ -59,33 +59,23 @@ mybatis-plus:
 #  basic:
 #    enabled : false
 
-#阿里云短信
-#ali:
-#  accessKey: "LTAI4GBfuSJUsnuYoHZXfNyF"
-#  secretKey: "cuN9l2ocFN8PebdAhHTSFK1kjklDqv"
-#  templateCode: "SMS_206535433"
-#  signName: "cutenine"
-#  regionId: "cn-hangzhou"
+
 ali:
-  accessKey: "LTAI5tCrWCmHwba1dcFzkrWb"
-  secretKey: "7EhVq9rAdW6TV6jz9WRzkK4s4l9lyZ"
-  templateCode: "SMS_213345338"
-  signName: "合肥郢队信息科技有限公司"
+  accessKey: "your sdk"
+  secretKey: "your sdk"
+  templateCode: "your sdk"
+  signName: "your sdk"
   regionId: "cn-hangzhou"
 
-#七牛云配置：
-#qiniu:
-#  accessKey: "06wMoJjcNXth578gHg_sX3cFasa4lHbZYehRqTo9"
-#  secretKey: "vBrO4a0DQzCK0-XLh6s4YYzIlOxUKzCO_99HS70o"
-#  bucket: "kasonmd"
+
 qiniu:
-  accessKey: "EX6HenC74E_DEPmQZvw85_KVsiDTk-SxO1bWZ0Db"
-  secretKey: "81L-N2H8MSVUzjGRmVO6474bbAwqdzgyLIb9rYor"
-  bucket: "hfanmo"
+  accessKey: "your sdk"
+  secretKey: "your sdk"
+  bucket: "your sdk"
 
 
 #微信支付
-appid: "wx8397f8696b538317"
-partner: "1473426802"
-partnerkey: "8A627A4578ACE384017C997F12D68B23"
-notifyurl: "http://a31ef7db.ngrok.io/WeChatPay/WeChatPayNotify"
+appid: "your sdk"
+partner: "your sdk"
+partnerkey: "your sdk"
+notifyurl: "your sdk"

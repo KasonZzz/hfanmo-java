@@ -18,9 +18,6 @@ import org.springframework.util.ObjectUtils;
 @Slf4j
 public class AliSmsUtil {
 
-    private String ACCESSKEY = "LTAI4GBfuSJUsnuYoHZXfNyF";
-    private String ACCESSSECRET = "cuN9l2ocFN8PebdAhHTSFK1kjklDqv";
-
     /**
      * ak
      */
