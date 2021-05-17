@@ -20,4 +20,9 @@ public interface SpaAppDomicileService extends IService<SpaAppDomicile> {
     boolean updateDomicile(SpaAppDomicile spaAppDomicile);
 
     List<SpaAppDomicile> queryDomicile(SpaAppDomicile spaAppDomicile);
+
+    List<SpaAppDomicile> queryDomicileByIdAndStatus(SpaAppDomicile spaAppDomicile);
+
+
+
 }

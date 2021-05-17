@@ -42,7 +42,7 @@ public class GeneratorCodeController {
                 .setFileOverride(true)//第二次生成会把第一次生成的覆盖掉
                 .setOpen(false)//生成完毕后是否自动打开输出目录
                 .setSwagger2(true)//实体属性 Swagger2 注解
-                .setIdType(IdType.ASSIGN_ID)//主键策略
+                .setIdType(IdType.AUTO)//主键策略
                 .setFileOverride(false)//文件覆盖
                 .setServiceName("%sService")//生成的service接口名字首字母是否为I，这样设置就没有I
                 .setBaseResultMap(false)//生成resultMap

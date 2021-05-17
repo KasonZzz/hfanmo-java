@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import cn.hfanmo.lzspa.util.serializer.LongJsonDeserializer;
 import cn.hfanmo.lzspa.util.serializer.LongJsonSerializer;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -47,6 +48,9 @@ public class SpaAppProduct extends Model<SpaAppProduct> {
     @ApiModelProperty(value = "描述")
     private String productDesc;
 
+    @ApiModelProperty(value = "图片地址")
+    private String img;
+
     @ApiModelProperty(value = "价格")
     private BigDecimal price;
 
@@ -70,6 +74,22 @@ public class SpaAppProduct extends Model<SpaAppProduct> {
     @JsonSerialize(using = LongJsonSerializer.class)
     @JsonDeserialize(using = LongJsonDeserializer.class)
     private Long updateBy;
+
+    @TableField(exist = false)
+    private int number;
+
+    @TableField(exist = false)
+    private Long userId;
+
+    @TableField(exist = false)
+    @JsonSerialize(using = LongJsonSerializer.class)
+    @JsonDeserialize(using = LongJsonDeserializer.class)
+    private Long massId;
+
+    @TableField(exist = false)
+    @JsonSerialize(using = LongJsonSerializer.class)
+    @JsonDeserialize(using = LongJsonDeserializer.class)
+    private Long domId;
 
 
     @Override

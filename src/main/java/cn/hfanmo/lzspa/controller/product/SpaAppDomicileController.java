@@ -41,6 +41,12 @@ public class SpaAppDomicileController {
         return new BaseResult(domiciles);
     }
 
+    @PostMapping("queryDomicileByIdAndStatus")
+    public BaseResult queryDomicileByIdAndStatus(@RequestBody SpaAppDomicile spaAppDomicile){
+        List<SpaAppDomicile> domiciles =spaAppDomicileService.queryDomicileByIdAndStatus(spaAppDomicile);
+        return new BaseResult(domiciles);
+    }
+
 
     @PostMapping("add")
     public boolean addDomicile(@RequestBody SpaAppDomicile spaAppDomicile){

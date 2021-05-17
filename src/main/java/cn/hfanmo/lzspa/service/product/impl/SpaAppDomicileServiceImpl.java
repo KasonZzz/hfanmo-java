@@ -65,4 +65,13 @@ public class SpaAppDomicileServiceImpl extends ServiceImpl<SpaAppDomicileMapper,
         List<SpaAppDomicile> list = this.list(qr);
         return list;
     }
+
+    @Override
+    public List<SpaAppDomicile> queryDomicileByIdAndStatus(SpaAppDomicile spaAppDomicile) {
+        QueryWrapper<SpaAppDomicile> qr = new QueryWrapper<>();
+        qr.eq("status",spaAppDomicile.getStatus());
+        qr.eq("user_id",spaAppDomicile.getUserId());
+        List<SpaAppDomicile> list = this.list(qr);
+        return list;
+    }
 }
