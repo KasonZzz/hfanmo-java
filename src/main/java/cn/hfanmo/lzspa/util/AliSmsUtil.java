@@ -111,29 +111,7 @@ public class AliSmsUtil {
     }
 
 
-    public static void main(String[] args) {
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4GBfuSJUsnuYoHZXfNyF", "cuN9l2ocFN8PebdAhHTSFK1kjklDqv");
-        IAcsClient client = new DefaultAcsClient(profile);
 
-        CommonRequest request = new CommonRequest();
-        request.setSysMethod(MethodType.POST);
-        request.setSysDomain("dysmsapi.aliyuncs.com");
-        request.setSysVersion("2017-05-25");
-        request.setSysAction("SendSms");
-        request.putQueryParameter("RegionId", "cn-hangzhou");
-        request.putQueryParameter("PhoneNumbers", "18351964001");
-        request.putQueryParameter("SignName", "cutenine");
-        request.putQueryParameter("TemplateCode", "SMS_206535433");
-        request.putQueryParameter("TemplateParam", "{\"code\":\"666666\"}");
-//        request.putQueryParameter("SmsUpExtendCode", "963852");
-//        request.putQueryParameter("OutId", "55559847");
-        try {
-            CommonResponse response = client.getCommonResponse(request);
-            System.out.println(response.getData());
-        } catch (ClientException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 }
